@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row my-2">
+    <div class="h2 mt-3">Search About API</div>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" #searchInput>
+  </div>
+  <input type="button" class="btn btn-primary mx-2" value="Submit" (click)="getResult(searchInput.value)">
+
+  <div class="row my-2">
+    <div class="col-md-8">
+      <article class="blog-post" *ngFor="let data of paginatedResult">
+        <h2 class="blog-post-title">{{ data.API }}</h2>
+        <p class="blog-post-meta"><a href="{{ data.Link }}" target="_blank">Visit Link</a></p>
+
+        <p>{{ data.Description }}</p>
+        <hr>
+      </article>
+    </div>
+  </div>
+
+  <nav *ngIf="searchResult.length > pageSize">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" href="#" (click)="previousPage()">Previous</a>
+      </li>
+      <li class="page-item" [class.active]="currentPage === page" *ngFor="let page of pages">
+        <a class="page-link" href="#" (click)="changePage(page)">{{ page }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <a class="page-link" href="#" (click)="nextPage()">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>

@@ -1,0 +1,7 @@
+.form-control{
+width: 75vw;
+float: left;
+}
+.container{
+    background: linear-gradient(to bottom, #66ffff 23%, #ff99cc 100%);
+}
